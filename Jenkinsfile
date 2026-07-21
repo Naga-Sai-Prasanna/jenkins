@@ -44,8 +44,11 @@ pipeline {
                        echo "Password: ${params.PASSWORD}"
                     """   
                 
+                }
+         
             }
-        }
+
+        }    
         stage('Deploy') {
             when {
                 expression { "${params.DEPLOY}" == "true" }
@@ -57,7 +60,8 @@ pipeline {
             //     parameters {
             //         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
             //     }
-            // }    
+            // 
+           
             steps {
                script {
                     sh """
@@ -81,10 +85,3 @@ pipeline {
     }
 }
 
-
-// if you wnateldy fail the pipeline add exit 1
-// script {
-//              sh """
-//                     echo "Building" 
-//                     exit 1
-//                 """    
