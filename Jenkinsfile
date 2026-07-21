@@ -4,13 +4,17 @@ pipeline {
             label 'ROBOSHOP'
         }
     }
+    environment {
+        COURSE = "Jenkins"
+    }
     stages {
         stage('Build') {
             steps {
                 script{
                     sh """
-                        echo "building"   
-                        exit 1
+                        echo "building" 
+                        echo $COURSE  
+
                     """
                 }
             }
@@ -34,7 +38,7 @@ pipeline {
             }
         }
     }
-    //postbuild always--even pipeline success or fail it will run
+    //postbuild always run --even pipeline success or fail it will run
 
     post {
         always {
