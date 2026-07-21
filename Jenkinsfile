@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script{
                     sh """
-                        echo "building"
+                        echo "building"   
                     """
                 }
             }
@@ -25,8 +25,27 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'echo "deploying"'
+                script{
+                    sh """
+                        echo "deploying"
+                    """
+                }
             }
         }
+    }
+    //postbuild always--even pipeline success or fail it will run
+
+    post {
+        always {
+            echo 'I will always say Hello again!'
+        }
+        success {
+            echo "pipeline success"
+        }
+        failure {
+            echo "pipeline failure"
+        }
+    
+    
     }
 }
